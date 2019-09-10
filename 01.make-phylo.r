@@ -3,7 +3,7 @@ library(V.PhyloMaker)
 library(dplyr)
 library(readxl)
 
-load("raw.data/meadows-2018.rda")
+load("clean.data/meadows-2018.rda")
 rm(meta)
 
 gf <- tips.info[, c(3,4)] %>% group_by(family, genus) %>% slice(1) %>% ungroup()
