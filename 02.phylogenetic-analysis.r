@@ -27,7 +27,7 @@ ses.mntd.a <- ses.mntd(dat, mat, null.model = "independentswap", runs = 999, ite
 meta$mntd.a.z <- ses.mntd.a$mntd.obs.z
 meta$mntd.a.p <- ses.mntd.a$mntd.obs.p
 
-save(meta, file = "clean.data/meadows-phylo-ses")
+save(meta, file = "clean.data/meadows-phylo-ses.rda")
 
 #_________________________________________________________________________________________
 
@@ -59,4 +59,4 @@ ses.mntd.a <- ses.mntd(dat2, mat2, null.model = "independentswap", runs = 999, i
 meta2$mntd.a.z <- ses.mntd.a$mntd.obs.z
 meta2$mntd.a.p <- ses.mntd.a$mntd.obs.p
 
-save(meta2, file = "clean.data/meadows-phylo-ses-ao")
+save(meta2, file = "clean.data/meadows-phylo-ses-ao.rda")
