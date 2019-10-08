@@ -4,7 +4,7 @@ plot.effect <- function(var)
   require(effects)
   
   f <- as.formula(paste0(var, "~ site + year"))
-  fit <- lme(f, random = ~ 1 | id, df, method = "REML")
+  fit <- lme(f, random = ~ 1 | id, df[!is.na(df[, var]),], method = "REML")
   
   an <- anova(fit)
   ef <- effect("site", fit)

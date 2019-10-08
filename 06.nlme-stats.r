@@ -112,8 +112,43 @@ plot.effect("mpd.a.ldmc")
 plot.effect("mpd.a.seed")
 par(op)
 
-
+#---#
 
 res <- dbFD(tr[, 1:5], pp, corr = "cailliez")
 
+df$fric.5 <- res$FRic
+df$feve.5 <- res$FEve
+df$fdiv.5 <- res$FDiv
+df$mpd.a.5 <- res$RaoQ
+
+tr$age_first_flowering <- factor(tr$age_first_flowering)
+tr$branching <- factor(tr$branching)
+tr$leaf_distribution <- factor(tr$leaf_distribution)
+tr$growth_form <- factor(tr$growth_form)
+tr$dispersal <- factor(tr$dispersal)
+tr$life_span <- factor(tr$life_span)
+library(cluster)
+dist <- daisy(tr[, 6:11], metric = "gower")
+res <- dbFD(x = dist, a = pp, corr = "cailliez")
+
+df$fric.6 <- res$FRic
+df$feve.6 <- res$FEve
+df$fdiv.6 <- res$FDiv
+df$mpd.a.6 <- res$RaoQ
+
+op <- par(mfcol = c(2, 2), mar = c(0.5, 4, 0.5, 0.5))
+plot.effect("fric.5")
+plot.effect("feve.5")
+plot.effect("fdiv.5")
+plot.effect("mpd.a.5")
+par(op)
+
+op <- par(mfcol = c(2, 2), mar = c(0.5, 4, 0.5, 0.5))
+plot.effect("fric.6")
+plot.effect("feve.6")
+plot.effect("fdiv.6")
+plot.effect("mpd.a.6")
+par(op)
+
+#---#
 
