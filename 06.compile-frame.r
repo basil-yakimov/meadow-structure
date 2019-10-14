@@ -1,6 +1,22 @@
 load("clean.data/meadows-2018.rda")
 load("clean.data/traits-2018-61.rda")
 
+#---clean trait data---#
+
+tr$age_first_flowering <- factor(tr$age_first_flowering)
+tr$branching <- factor(tr$branching)
+tr$leaf_distribution <- factor(tr$leaf_distribution)
+tr$growth_form <- factor(tr$growth_form)
+tr$dispersal <- factor(tr$dispersal)
+tr$life_span <- factor(tr$life_span)
+
+tr$SLA <- tr$SLA/tr$LDMC
+tr["Vicia_sativa", "SLA"] <- 11600.923 / 0.37 / 1000
+tr["Vicia_cracca", "SLA"] <- 19261.982 / 0.84 / 1000
+tr["Vicia_tetrasperma", "SLA"] <- 6015.802 / 0.26 / 1000
+
+#---final frame basis---#
+
 df <- data.frame(year = meta$year, 
                  site = sapply(strsplit(as.character(meta$site), "-"), function(x) x[[1]]),
                  id = paste0(sapply(strsplit(as.character(meta$site), "-"), function(x) x[[1]]), "-", c(rep(1:50, 2), rep(1:65, 15))))
@@ -96,12 +112,6 @@ df$feve.5 <- res$FEve
 df$fdiv.5 <- res$FDiv
 df$mpd.a.5 <- res$RaoQ
 
-tr$age_first_flowering <- factor(tr$age_first_flowering)
-tr$branching <- factor(tr$branching)
-tr$leaf_distribution <- factor(tr$leaf_distribution)
-tr$growth_form <- factor(tr$growth_form)
-tr$dispersal <- factor(tr$dispersal)
-tr$life_span <- factor(tr$life_span)
 library(cluster)
 dist <- daisy(tr[, 6:11], metric = "gower")
 res <- dbFD(x = dist, a = pp, corr = "cailliez")
