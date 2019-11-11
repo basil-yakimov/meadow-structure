@@ -8,6 +8,10 @@ tr$growth_form <- factor(tr$growth_form)
 tr$dispersal <- factor(tr$dispersal)
 tr$life_span <- factor(tr$life_span)
 
+tr$SLA <- tr$SLA/tr$LDMC
+tr["Vicia_sativa", "SLA"] <- 11600.923 / 0.37 / 1000
+tr["Vicia_cracca", "SLA"] <- 19261.982 / 0.84 / 1000
+tr["Vicia_tetrasperma", "SLA"] <- 6015.802 / 0.26 / 1000
 
 dd <- dat[, rownames(tr)]
 
