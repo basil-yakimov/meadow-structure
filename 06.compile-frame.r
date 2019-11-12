@@ -142,10 +142,10 @@ df$mntd.a.z.phylo <- meta$mntd.a.z
 
 load("clean.data/meadows-phylo-ses-ao.rda")
 
-df$mpd.z.phylo.ao <- meta$mpd.z
-df$mpd.a.z.phylo.ao <- meta$mpd.a.z
-df$mntd.z.phylo.ao <- meta$mntd.z
-df$mntd.a.z.phylo.ao <- meta$mntd.a.z
+df$mpd.z.phylo.ao <- meta2$mpd.z
+df$mpd.a.z.phylo.ao <- meta2$mpd.a.z
+df$mntd.z.phylo.ao <- meta2$mntd.z
+df$mntd.a.z.phylo.ao <- meta2$mntd.a.z
 
 #---#
 
